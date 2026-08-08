@@ -1,0 +1,14 @@
+[project]
+name = "kakeibo"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "django>=5.2.16",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.6.1",
+]

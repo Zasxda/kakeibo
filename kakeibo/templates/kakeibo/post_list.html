@@ -1,0 +1,48 @@
+<!-- {% load static %}
+<html>
+    <head>
+        <title>家計簿</title>
+        <link rel="stylesheet" href="{% static 'kakeibo.css' %}">
+    </head>
+    <body>
+            <ul>
+                <li>収入</li>
+                <li>支出</li>
+            </ul>
+
+
+    </body>
+</html> -->
+
+{% load static %}
+<html>
+    <head>
+        <title>家計簿</title>
+        <link rel="stylesheet" href="{% static 'kakeibo.css' %}">
+    </head>
+    <body>
+        <form method="post">
+            <table>
+                <tr>
+                    <th>日付</th>
+                    <th>収入</th>
+                    <th>支出</th>
+                </tr>
+                <tr>
+                        <th>{{today}}</th>
+                    <th>
+                        <input type="text" name="income" maxlength="10" value="{{income}}"" placeholder="収入を入力"/>
+                    </th>
+                    <th>
+                        <input type="text" name="outcome" maxlength="10" value="{{outcome}}" placeholder="支出を入力"/>
+                    </th>
+                </tr>
+            </table>
+
+            <div>
+                {% csrf_token %}
+                <button type="submit" name="submit">確定</button>
+            </div>
+        </form>
+    </body>
+</html>
