@@ -11,4 +11,8 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pre-commit>=4.6.1",
+    "ruff>=0.16.2",
 ]
+
+[tool.ruff.lint.per-file-ignores]
+"kakeibo/migrations/*.py" = ["RUF012"]

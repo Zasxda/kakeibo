@@ -1,0 +1,22 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v6
+
+    - name: install uv #たぶんuvだけじゃなくて、pythonも自動的にインストールされる
+      uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+      with:
+        python-version: "3.11.15"
+
+    - name: Install dependencies
+      run: uv sync
+
+    - name: Run ruff
+      run: uv run ruff check .

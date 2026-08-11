@@ -1,22 +1,24 @@
+from datetime import UTC, datetime
+
 from django.shortcuts import render
-from datetime import datetime
+
 from .models import Record
 
-def post_list(request):
-    records = Record.objects.all()
 
-    if (request.method == "POST"):
-        records = Record.objects.create(
-            # date = request.POST.get("today"),
-            date = datetime.now(),
-            income = request.POST.get("income"),
-            outcome = request.POST.get("outcome"),
+def post_list(request):
+    if request.method == "POST":
+        Record.objects.create(
+            date=datetime.now(UTC).date(),
+            income=request.POST.get("income"),
+            outcome=request.POST.get("outcome"),
         )
+
+    records = Record.objects.all()
 
     return render(
         request,
-        'kakeibo/post_list.html',
+        "kakeibo/post_list.html",
         {
             "records": records,
-        }
+        },
     )
