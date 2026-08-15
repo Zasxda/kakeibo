@@ -28,13 +28,21 @@
                     <th>収入</th>
                     <th>支出</th>
                 </tr>
+                {% for record in records %}
                 <tr>
-                        <th>{{today}}</th>
+                    <th>{{ record.date }}</th>
+                    <th>{{ record.income }}</th>
+                    <th>{{ record.outcome }}</th>
+                </tr>
+                {% endfor %}
+
+                <tr>
+                        <th>{{ today }}</th>
                     <th>
-                        <input type="text" name="income" maxlength="10" value="{{income}}"" placeholder="収入を入力"/>
+                        <input type="text" name="income" maxlength="10"  placeholder="収入を入力"/>
                     </th>
                     <th>
-                        <input type="text" name="outcome" maxlength="10" value="{{outcome}}" placeholder="支出を入力"/>
+                        <input type="text" name="outcome" maxlength="10"  placeholder="支出を入力"/>
                     </th>
                 </tr>
             </table>
